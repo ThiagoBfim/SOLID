@@ -1,0 +1,9 @@
+*.pdf
+*.epub
+target
+.classpath
+.project
+.settings
+.build/
+
+.idea/
