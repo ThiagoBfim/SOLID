@@ -10,14 +10,16 @@ import com.itextpdf.layout.element.IElement;
 import com.itextpdf.layout.property.AreaBreakType;
 import solid.domain.Capitulo;
 import solid.domain.Ebook;
+import solid.domain.GeradorEbook;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 
-public class GeradorPDF {
+public class GeradorPDF implements GeradorEbook {
 
+    @Override
     public void gerarEbook(Ebook ebook) {
         final Path arquivoDeSaida = ebook.getArquivoSaida();
         try (PdfWriter writer = new PdfWriter(Files.newOutputStream(arquivoDeSaida));

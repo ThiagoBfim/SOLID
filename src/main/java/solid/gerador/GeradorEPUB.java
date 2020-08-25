@@ -6,13 +6,15 @@ import nl.siegmann.epublib.epub.EpubWriter;
 import nl.siegmann.epublib.service.MediatypeService;
 import solid.domain.Capitulo;
 import solid.domain.Ebook;
+import solid.domain.GeradorEbook;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-public class GeradorEPUB {
+public class GeradorEPUB implements GeradorEbook {
 
+    @Override
     public void gerarEbook(Ebook ebook) {
         final Path arquivoDeSaida = ebook.getArquivoSaida();
         Book epub = new Book();

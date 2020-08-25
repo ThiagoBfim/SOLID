@@ -6,6 +6,7 @@ import org.commonmark.node.Node;
 import org.commonmark.node.Text;
 import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;
+import solid.application.Renderizador;
 import solid.domain.Capitulo;
 
 import java.io.IOException;
@@ -17,10 +18,11 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class RenderizadorMDParaHTML {
+public class RenderizadorMDParaHTML implements Renderizador {
 
     private List<Capitulo> capitulos = new ArrayList<>();
 
+    @Override
     public List<Capitulo> renderizarHtml(Path diretorioDosMD) {
         PathMatcher matcher = FileSystems.getDefault().getPathMatcher("glob:**/*.md");
         try (Stream<Path> arquivosMD = Files.list(diretorioDosMD)) {
