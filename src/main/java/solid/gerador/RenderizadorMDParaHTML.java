@@ -8,6 +8,7 @@ import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;
 import solid.application.Renderizador;
 import solid.domain.Capitulo;
+import solid.plugin.AplicadorTema;
 
 import java.io.IOException;
 import java.nio.file.FileSystems;
@@ -47,7 +48,9 @@ public class RenderizadorMDParaHTML implements Renderizador {
             try {
                 HtmlRenderer renderer = HtmlRenderer.builder().build();
                 String render = renderer.render(document);
-                capitulo.setConteudoHtml(render);
+                AplicadorTema tema = new AplicadorTema();
+                String html = tema.aplica(render);
+                capitulo.setConteudoHtml(html);
                 capitulos.add(capitulo);
             } catch (Exception ex) {
                 throw new RuntimeException("Erro ao renderizar para HTML o arquivo " + arquivoMD, ex);

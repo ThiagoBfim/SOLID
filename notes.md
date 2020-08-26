@@ -32,3 +32,38 @@ Com a solução proposta, faremos factory e interfaces para inverter a dependenc
 
 ----------------------------------------------------------
 
+#### Interface Segregation Principle
+
+Deve ser criado dois temas para a geração dos ebooks, sendo eles:
+
+##### 1º
+``` 
+h1	{
+    border-bottom: 1px	dashed	black;
+    font-size: 3em;
+}
+h2	{
+    border-left: 1px	solid	black;
+    padding-left: 5px;
+    border-bottom: 1px	solid	black;
+}
+
+blockquote {
+    border: 1px solid black;
+    padding: 5px;
+}
+```
+
+##### 2º 
+
+```
+li	{
+    border-bottom: 0.5px	dashed	red;
+}
+
+```
+
+Para isso, utilizaremos o principio de segregação de interface, para assegurar
+que nossa aplicação dependa de uma interface, e não de uma implementação.
+Então, se precisarmos futuramente expor essa API, alguém poderia apenas criar a implementação
+dessa interface e tudo funcionaria.
