@@ -2,6 +2,7 @@ package solid.cli;
 
 import org.apache.commons.cli.*;
 import solid.application.ParametrosExternos;
+import solid.domain.Formato;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -64,6 +65,10 @@ public class LeitorOpcoesCLI implements ParametrosExternos {
     }
 
     @Override
+    public Formato getFormatEbook() {
+        return Formato.valueOf(getNomeFormatEbook().toUpperCase());
+    }
+
     public String getNomeFormatEbook() {
         String nomeDoFormatoDoEbook = getFormat();
         if (nomeDoFormatoDoEbook != null) {

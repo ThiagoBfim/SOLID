@@ -1,9 +1,11 @@
 package solid.application;
 
+import solid.domain.Formato;
+
 import java.nio.file.Path;
 
 public interface ParametrosExternos {
-    String getNomeFormatEbook();
+    Formato getFormatEbook();
 
     Path getArquivoDeSaida();
 

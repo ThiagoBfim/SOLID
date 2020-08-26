@@ -28,3 +28,7 @@ pois estamos dependendo de uma implementação e não de uma interface.
 - Se precisarmos criar um Gerador de DOCx precisariamos alterar a classe principal do sistema, o impacto seria maior.
 
 Com a solução proposta, faremos factory e interfaces para inverter a dependencia dos modulos.
+
+
+----------------------------------------------------------
+

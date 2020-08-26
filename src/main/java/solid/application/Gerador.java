@@ -2,6 +2,7 @@ package solid.application;
 
 import solid.domain.Capitulo;
 import solid.domain.Ebook;
+import solid.domain.Formato;
 import solid.gerador.RenderizadorMDParaHTML;
 
 import java.nio.file.Path;
@@ -11,7 +12,7 @@ public class Gerador {
 
     public void gerar(ParametrosExternos parametrosExternos) {
         final Path diretorioDosMD = parametrosExternos.getDiretorioDosMD();
-        final String formato = parametrosExternos.getNomeFormatEbook();
+        final Formato formato = parametrosExternos.getFormatEbook();
         final Path arquivoDeSaida = parametrosExternos.getArquivoDeSaida();
 
         RenderizadorMDParaHTML renderizador = new RenderizadorMDParaHTML();
