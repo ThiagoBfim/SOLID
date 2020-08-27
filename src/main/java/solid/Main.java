@@ -1,4 +1,4 @@
-package cotuba;
+package solid;
 
 import com.itextpdf.html2pdf.HtmlConverter;
 import com.itextpdf.kernel.pdf.PdfDocument;
@@ -54,7 +54,7 @@ public class Main {
 			cmd = cmdParser.parse(options, args);
 		} catch (ParseException e) {
 			System.err.println(e.getMessage());
-			ajuda.printHelp("cotuba", options);
+			ajuda.printHelp("solid", options);
 			System.exit(1);
 			return;
 		}
