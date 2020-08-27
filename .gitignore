@@ -7,4 +7,4 @@ target
 .build/
 
 .idea/
-solid.iml
+solid-api.iml
