@@ -1,8 +1,8 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>cotuba</groupId>
-	<artifactId>cotuba-cli</artifactId>
+	<groupId>solid</groupId>
+	<artifactId>solid-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
 	<properties>
@@ -78,7 +78,6 @@
 			<artifactId>reflections</artifactId>
 			<version>0.9.12</version>
 		</dependency>
-
 
 	</dependencies>
 

@@ -1,5 +1,5 @@
 
-#### Single Responsibility Principle
+### Single Responsibility Principle
 
 O esperado dessa demanda é separar o Main em algumas outras classes, 
 para tentar garantir uma responsabilidade única por classe.
@@ -10,7 +10,7 @@ a reforação não altere o comportamento do sistema.
 
 ----------------------------------------------------------
 
-#### Clean Architecture
+### Clean Architecture
 
 ![Clean Architecture](https://blog.cleancoder.com/uncle-bob/images/2012-08-13-the-clean-architecture/CleanArchitecture.jpg)
 
@@ -32,7 +32,7 @@ Com a solução proposta, faremos factory e interfaces para inverter a dependenc
 
 ----------------------------------------------------------
 
-#### Interface Segregation Principle
+### Interface Segregation Principle
 
 Deve ser criado dois temas para a geração dos ebooks, sendo eles:
 
@@ -67,3 +67,14 @@ Para isso, utilizaremos o principio de segregação de interface, para assegurar
 que nossa aplicação dependa de uma interface, e não de uma implementação.
 Então, se precisarmos futuramente expor essa API, alguém poderia apenas criar a implementação
 dessa interface e tudo funcionaria.
+
+Para que isso funcione  precisaremos utilizar o ServiceLoader para que a aplicação
+consiga detectar a implementação de um projeto externo.
+
+
+### Open and Closed Principle 
+
+
+
+
+### Liskov Substitution  Principle

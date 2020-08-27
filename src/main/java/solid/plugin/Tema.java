@@ -6,6 +6,7 @@ import org.reflections.Reflections;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Objects;
+import java.util.ServiceLoader;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -16,6 +17,12 @@ public interface Tema {
     static List<String> listaDeTemas() {
         Reflections reflections = new Reflections("solid.tema");
         Set<Class<? extends Tema>> temas = reflections.getSubTypesOf(Tema.class);
+
+        temas.addAll(ServiceLoader.load(Tema.class)
+                .stream()
+                .map(ServiceLoader.Provider::type)
+                .collect(Collectors.toList()));
+
         return temas.stream()
                 .filter(s -> s.getAnnotation(TemaConfig.class) != null)
                 .map(Tema::getTema)
