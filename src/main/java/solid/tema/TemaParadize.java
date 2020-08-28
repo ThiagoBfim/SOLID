@@ -1,9 +1,6 @@
 package solid.tema;
 
-import solid.domain.Capitulo;
 import solid.plugin.Tema;
-
-import java.util.List;
 
 public class TemaParadize implements Tema {
 
@@ -15,8 +12,4 @@ public class TemaParadize implements Tema {
                 "\n";
     }
 
-    @Override
-    public void acaoAntesGeracaoPDF(List<Capitulo> capitulos) {
-
-    }
 }

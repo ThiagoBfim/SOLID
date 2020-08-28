@@ -2,6 +2,7 @@ package solid.plugin;
 
 
 import org.reflections.Reflections;
+import solid.domain.Capitulo;
 
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
@@ -10,28 +11,27 @@ import java.util.ServiceLoader;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public interface Tema {
+public interface AcaoAntesGeracaoPDF {
 
-    String cssDoTema();
+    void action(List<Capitulo> capitulos);
 
-    static List<String> listaDeTemas() {
+    static void doActionBeforeGeneratePdf(List<Capitulo> capitulos) {
         Reflections reflections = new Reflections("solid.tema");
-        Set<Class<? extends Tema>> temas = reflections.getSubTypesOf(Tema.class);
+        Set<Class<? extends AcaoAntesGeracaoPDF>> temas = reflections.getSubTypesOf(AcaoAntesGeracaoPDF.class);
 
-        temas.addAll(ServiceLoader.load(Tema.class)
+        temas.addAll(ServiceLoader.load(AcaoAntesGeracaoPDF.class)
                 .stream()
                 .map(ServiceLoader.Provider::type)
                 .collect(Collectors.toList()));
 
-        return temas.stream()
+        temas.stream()
                 .filter(s -> s.getAnnotation(PluginConfig.class) != null)
-                .map(Tema::getTema)
+                .map(AcaoAntesGeracaoPDF::getAcaoAntesGeracaoPDF)
                 .filter(Objects::nonNull)
-                .map(Tema::cssDoTema)
-                .collect(Collectors.toList());
+                .forEach(s -> s.action(capitulos));
     }
 
-    static Tema getTema(Class<? extends Tema> s) {
+    static AcaoAntesGeracaoPDF getAcaoAntesGeracaoPDF(Class<? extends AcaoAntesGeracaoPDF> s) {
         try {
             return s.getDeclaredConstructor().newInstance();
         } catch (InstantiationException | IllegalAccessException | InvocationTargetException | NoSuchMethodException e) {

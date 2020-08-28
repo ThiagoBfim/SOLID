@@ -79,9 +79,23 @@ adicionar o rodapé.
 Para isso vamos criar um método na nossa interface para que o usuário possa adicionar
 esse comportamento.
 
+### Liskov Substitution  Principle
+
+O sistema estava violando alguns principios.
+
+Com a refatoração de extrair o método de ação antes da geração do PDF para outra
+classe, passamos a respeitar o Interface Segregation Principle, 
+que diz que Clientes não devem ser obrigados a depender de métodos que não usam.
+
+E também aplicamos o Liskov Substituiton Principle, 
+que diz que os subtipos devem ser substituíveis por seus tipos base.
+
+Antes todos eram obrigados a implementar o método "acaoAntesGeracaoPDF", 
+na qual permitiam trazer algum comporamento indevido, como por exemplo:
+
+<code>throw new UnsupportedOperationException();</code>
+
 ### Open and Closed Principle 
 
 
 
-
-### Liskov Substitution  Principle
