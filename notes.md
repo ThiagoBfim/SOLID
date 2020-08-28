@@ -97,5 +97,13 @@ na qual permitiam trazer algum comporamento indevido, como por exemplo:
 
 ### Open and Closed Principle 
 
+Atualmente no nosso projeto, estamos passando uma lista de capítulos List<Capitulos>. 
+Com isso, nosso projeto está aberto a alterações, alguém pode mudar os dados do capitulo,
+ ou da lista por completo, gerando uma falha no nosso projeto.
+ 
+Normalmente essas alterações quando há a violação do OCP,
+ não é feita de má fé, simplesmente a API está aberta a isso, e a pessoa pressupõe que pode fazer a alteração.
+ 
+Então, vamos refatorar para não deixar o usuário alterar tudo do Capitulo e da Lista. 
 
 
