@@ -9,8 +9,7 @@ import java.util.List;
 @TemaConfig
 public class TemaUsuario implements Tema {
 
-    @Override
-    public void actionBeforeGeneratePdf(List<Capitulo> capitulos) {
+    public void acaoAntesGeracaoPDF(List<Capitulo> capitulos) {
         var assinatura =
                 "<div style=\"background-color: #e0ebeb; padding:10px\">\n" +
                         "<p>Joseph</p>" +

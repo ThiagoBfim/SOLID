@@ -15,7 +15,7 @@ public interface Tema {
 
     String cssDoTema();
 
-    void actionBeforeGeneratePdf(List<Capitulo> capitulos);
+    void acaoAntesGeracaoPDF(List<Capitulo> capitulos);
 
     static List<String> listaDeTemas() {
         Reflections reflections = new Reflections("solid.tema");
@@ -47,7 +47,7 @@ public interface Tema {
                 .filter(s -> s.getAnnotation(TemaConfig.class) != null)
                 .map(Tema::getTema)
                 .filter(Objects::nonNull)
-                .forEach(s -> s.actionBeforeGeneratePdf(capitulos));
+                .forEach(s -> s.acaoAntesGeracaoPDF(capitulos));
     }
 
     static Tema getTema(Class<? extends Tema> s) {

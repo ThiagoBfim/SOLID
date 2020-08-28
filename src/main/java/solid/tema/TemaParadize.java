@@ -16,7 +16,7 @@ public class TemaParadize implements Tema {
     }
 
     @Override
-    public void actionBeforeGeneratePdf(List<Capitulo> capitulos) {
+    public void acaoAntesGeracaoPDF(List<Capitulo> capitulos) {
 
     }
 }

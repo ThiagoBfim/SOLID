@@ -26,7 +26,7 @@ public class TemaNeox implements Tema {
     }
 
     @Override
-    public void actionBeforeGeneratePdf(List<Capitulo> capitulos) {
+    public void acaoAntesGeracaoPDF(List<Capitulo> capitulos) {
 
     }
 }
