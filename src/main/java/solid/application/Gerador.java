@@ -4,6 +4,7 @@ import solid.domain.Capitulo;
 import solid.domain.Ebook;
 import solid.domain.Formato;
 import solid.gerador.RenderizadorMDParaHTML;
+import solid.plugin.Tema;
 
 import java.nio.file.Path;
 import java.util.List;
@@ -17,6 +18,7 @@ public class Gerador {
 
         RenderizadorMDParaHTML renderizador = new RenderizadorMDParaHTML();
         List<Capitulo> capitulos = renderizador.renderizarHtml(diretorioDosMD);
+        Tema.doActionBeforeGeneratePdf(capitulos);
         Ebook ebook = new Ebook();
         ebook.setFormato(formato);
         ebook.setArquivoSaida(arquivoDeSaida);

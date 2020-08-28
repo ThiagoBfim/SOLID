@@ -71,6 +71,13 @@ dessa interface e tudo funcionaria.
 Para que isso funcione  precisaremos utilizar o ServiceLoader para que a aplicação
 consiga detectar a implementação de um projeto externo.
 
+#### Parte 2:
+
+O cliente solicitou que fosse liberado a lista capitulos, pois há algumas páginas na qual ele precisa
+adicionar o rodapé.
+
+Para isso vamos criar um método na nossa interface para que o usuário possa adicionar
+esse comportamento.
 
 ### Open and Closed Principle 
 

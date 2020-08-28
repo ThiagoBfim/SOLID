@@ -1,6 +1,9 @@
 package solid.tema;
 
+import solid.domain.Capitulo;
 import solid.plugin.Tema;
+
+import java.util.List;
 
 public class TemaNeox implements Tema {
 
@@ -20,5 +23,10 @@ public class TemaNeox implements Tema {
                 "    border: 1px solid black;\n" +
                 "    padding: 5px;\n" +
                 "}";
+    }
+
+    @Override
+    public void actionBeforeGeneratePdf(List<Capitulo> capitulos) {
+
     }
 }

@@ -1,10 +1,25 @@
 package br.com.servico;
 
+import solid.domain.Capitulo;
 import solid.plugin.Tema;
 import solid.plugin.TemaConfig;
 
+import java.util.List;
+
 @TemaConfig
 public class TemaUsuario implements Tema {
+
+    @Override
+    public void actionBeforeGeneratePdf(List<Capitulo> capitulos) {
+        var assinatura =
+                "<div style=\"background-color: #e0ebeb; padding:10px\">\n" +
+                        "<p>Joseph</p>" +
+                        "<p style='text-align:right'>Brasília, 1 de Setembro de 2020</p>\n" +
+                        "</div>";
+        long count = capitulos.size();
+        capitulos.stream().skip(count - 1).findFirst()
+                .ifPresent(c -> c.setConteudoHtml(c.getConteudoHtml() + assinatura));
+    }
 
     @Override
     public String cssDoTema() {
@@ -23,4 +38,5 @@ public class TemaUsuario implements Tema {
                 "    padding: 5px;\n" +
                 "}";
     }
+
 }
