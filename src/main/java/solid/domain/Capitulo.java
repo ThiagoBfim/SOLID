@@ -1,22 +1,24 @@
 package solid.domain;
 
 public class Capitulo {
-    private String conteudoHtml;
-    private String titulo;
+    private StringBuilder conteudoHtml;
+    private final String titulo;
 
-    public String getConteudoHtml() {
-        return conteudoHtml;
-    }
-
-    public void setConteudoHtml(String conteudoHtml) {
+    public Capitulo(StringBuilder conteudoHtml, String titulo) {
         this.conteudoHtml = conteudoHtml;
+        this.titulo = titulo;
     }
 
     public String getTitulo() {
         return titulo;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public String getConteudoHtml() {
+        return conteudoHtml.toString();
     }
+
+    public void addConteudoFinal(String textoExtra) {
+        conteudoHtml.append(textoExtra);
+    }
+
 }

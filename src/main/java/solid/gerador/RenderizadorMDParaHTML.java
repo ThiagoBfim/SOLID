@@ -8,6 +8,8 @@ import org.commonmark.parser.Parser;
 import org.commonmark.renderer.html.HtmlRenderer;
 import solid.application.Renderizador;
 import solid.domain.Capitulo;
+import solid.domain.builder.CapituloBuilder;
+import solid.plugin.AcaoAntesGeracaoPDF;
 import solid.plugin.AplicadorTema;
 
 import java.io.IOException;
@@ -35,23 +37,24 @@ public class RenderizadorMDParaHTML implements Renderizador {
             throw new RuntimeException(
                     "Erro tentando encontrar arquivos .md em " + diretorioDosMD.toAbsolutePath(), ex);
         }
+        AcaoAntesGeracaoPDF.doActionBeforeGeneratePdf(capitulos.iterator());
         return capitulos;
     }
 
     private void criarCapitulo(Path arquivoMD) {
-        Capitulo capitulo = new Capitulo();
+        CapituloBuilder capituloBuilder = new CapituloBuilder();
         Parser parser = Parser.builder().build();
         Node document;
         try {
             document = parser.parseReader(Files.newBufferedReader(arquivoMD));
-            document.accept(new VisitorHeadingHtml(capitulo));
+            document.accept(new VisitorHeadingHtml(capituloBuilder));
             try {
                 HtmlRenderer renderer = HtmlRenderer.builder().build();
                 String render = renderer.render(document);
                 AplicadorTema tema = new AplicadorTema();
                 String html = tema.aplica(render);
-                capitulo.setConteudoHtml(html);
-                capitulos.add(capitulo);
+                capituloBuilder.setConteudoHtml(html);
+                capitulos.add(capituloBuilder.build());
             } catch (Exception ex) {
                 throw new RuntimeException("Erro ao renderizar para HTML o arquivo " + arquivoMD, ex);
             }
@@ -62,17 +65,17 @@ public class RenderizadorMDParaHTML implements Renderizador {
     }
 
     private static class VisitorHeadingHtml extends AbstractVisitor {
-        private final Capitulo capitulo;
+        private final CapituloBuilder capituloBuilder;
 
-        public VisitorHeadingHtml(Capitulo capitulo) {
-            this.capitulo = capitulo;
+        public VisitorHeadingHtml(CapituloBuilder capituloBuilder) {
+            this.capituloBuilder = capituloBuilder;
         }
 
         @Override
         public void visit(Heading heading) {
             if (heading.getLevel() == 1) {
                 String tituloDoCapitulo = ((Text) heading.getFirstChild()).getLiteral();
-                capitulo.setTitulo(tituloDoCapitulo);
+                capituloBuilder.setTitulo(tituloDoCapitulo);
             } else if (heading.getLevel() == 2) {
                 // seção
             } else if (heading.getLevel() == 3) {
